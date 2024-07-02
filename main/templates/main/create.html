@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title%}Create a new TodoList{% endblock%}
+
+{% block content %}
+    <h3>Create a new TodoList</h3>
+    <br>
+    <form method="POST" action="/create/" class="form-group">
+        {% csrf_token %}
+        <div class="input-group-prepend">
+            <button name="save" type="submit" class="btn btn-success">
+                Create
+            </button>
+            {{ form.name }}
+        </div>
+    </form>
+
+{% endblock %}
