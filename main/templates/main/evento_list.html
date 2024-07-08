@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Eventify - Eventos
+{% endblock%}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2>Eventos</h2>
+        <a href="/evento-form" class="btn btn-primary">Criar Novo Evento</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Local</th>
+                <th scope="col">Atrações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for evento in eventos %}
+            <tr>
+                <th scope="row"><a href="/evento/{{ evento.id }}">{{ evento.id }}</a></th>
+                <td><a href="/evento/{{ evento.id }}">{{ evento.nome }}</a></td>
+                <td>{{ evento.local.nome }}</td>
+                <td>
+                    {% for atracao in evento.atracoes.all %}
+                        {{ atracao.nome }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

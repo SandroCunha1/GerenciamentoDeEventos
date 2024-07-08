@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Eventify - Criar evento
+{% endblock%}
+
+{% block content %}
+    <div class="container mt-4">
+        <h3>Criar evento</h3>
+        <form method="POST" action="/evento_create/" class="form-group">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="input-group-prepend">
+                <button name="save" type="submit" class="btn btn-success">
+                    Criar
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

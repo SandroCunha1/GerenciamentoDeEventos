@@ -1,6 +1,8 @@
 {% extends 'main/base.html' %}
 
-{% block title %} View List {% endblock %}
+{% block title %}
+Eventify - Listagem/Eventos
+{% endblock%}
 
 {% block content %}
     <h1>{{ ls.name }}</h1>
@@ -26,7 +28,7 @@
         <div class="input-group mb-3">
             <div class="input-group-prepend">
                 <button type="submit" name="newItem" value="newItem"
-                    class="btn btn-success">Novo Item</button>
+                    class="btn btn-success">CRIAR EVENTO</button>
             </div>
             <input type="text" name="new">
         </div>

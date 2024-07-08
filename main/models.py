@@ -1,22 +1,23 @@
 from django.db import models
-from django.contrib.auth.models import User
 
-# Create your models here.
-
-class TodoList(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE,
-        related_name="todolist", null=True)
-    name = models.CharField(max_length=200)
+class Local(models.Model):
+    nome = models.CharField(max_length=200)
+    endereco = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.name
+        return self.nome
 
-
-class Item(models.Model):
-    todolist = models.ForeignKey(TodoList,
-        on_delete=models.CASCADE)
-    text = models.CharField(max_length=300)
-    complete = models.BooleanField()
+class Atracao(models.Model):
+    nome = models.CharField(max_length=200)
+    descricao = models.TextField()
 
     def __str__(self):
-        return self.text
+        return self.nome
+
+class Evento(models.Model):
+    nome = models.CharField(max_length=200)
+    atracoes = models.ManyToManyField(Atracao, related_name="eventos")
+    local = models.ForeignKey(Local, on_delete=models.CASCADE, related_name="eventos")
+
+    def __str__(self):
+        return self.nome
