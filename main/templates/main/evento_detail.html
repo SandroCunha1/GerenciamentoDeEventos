@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Eventify - {{ evento.nome }}
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1>{{ evento.nome }}</h1>
+    <p>Local: {{ evento.local.nome }}</p>
+    <h3>Atrações</h3>
+    <ul>
+        {% for atracao in evento.atracoes.all %}
+        <li>{{ atracao.nome }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

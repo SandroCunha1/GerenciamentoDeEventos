@@ -2,15 +2,31 @@
 
 {% block title %}
 Eventify - Home
-{% endblock%}
+{% endblock %}
 
 {% block content %}
-<h1>Home Page</h1>
-<ul>
-    Eventos
-    <li>
-        Evento 1
-    </li>
-</ul>
-
+<div class="container mt-4">
+    <h1 class="mb-4">Eventos</h1>
+    <div class="row">
+        {% for evento in eventos %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ evento.nome }}</h5>
+                    <p class="card-text">
+                        Local: {{ evento.local.nome }}<br>
+                        Atrações:
+                        <ul>
+                            {% for atracao in evento.atracoes.all %}
+                            <li>{{ atracao.nome }}</li>
+                            {% endfor %}
+                        </ul>
+                    </p>
+                    <a href="{% url 'evento-detail' evento.id %}" class="btn btn-primary">Ver detalhes</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

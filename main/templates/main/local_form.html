@@ -2,16 +2,17 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-Eventify - Criar evento
-{% endblock%}
+Eventify - Criar Local
+{% endblock %}
 
 {% block content %}
     <div class="container mt-4">
-        <h3>Criar evento</h3>
-        <form method="POST" action="{% url 'evento-form' %}" class="form-group">
+        <h3>Criar Local</h3>
+        <br>
+        <form method="POST" action="{% url 'create-local' %}" class="form-group">
             {% csrf_token %}
             {{ form|crispy }}
-            <div class="input-group-prepend">
+            <div class="input-group-prepend mt-3">
                 <button name="save" type="submit" class="btn btn-success">
                     Criar
                 </button>

@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Eventify - Locais
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Locais</h2>
+            <a href="{% url 'create-local' %}" class="btn btn-primary">Criar Novo Local</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Endereço</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for local in locais %}
+                <tr>
+                    <th scope="row">{{ local.id }}</th>
+                    <td>{{ local.nome }}</td>
+                    <td>{{ local.endereco }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+Eventify - Atrações
+{% endblock %}
+
+{% block content %}
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Atrações</h2>
+            <a href="{% url 'atracao-form' %}" class="btn btn-primary">Criar Nova Atração</a>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Descricao</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for atracao in atracoes %}
+                <tr>
+                    <th scope="row">{{ atracao.id }}</th>
+                    <td>{{ atracao.nome }}</td>
+                    <td>{{ atracao.descricao }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
